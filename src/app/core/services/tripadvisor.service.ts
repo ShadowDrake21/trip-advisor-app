@@ -1,7 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BASE_API_URL } from '../constants/tripadvisor.constants';
-import { ISearchLocationOptions } from '../../shared/models/search.model';
+import {
+  ILocatioSearch,
+  ISearchLocationOptions,
+} from '../../shared/models/search.model';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
@@ -17,12 +20,6 @@ export class TripadvisorService {
     let params = new HttpParams()
       .set('searchQuery', searchQuery)
       .set('key', environment.TRIPADVISOR_KEY);
-    const headers = new HttpHeaders({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Referer: 'https://1005-46-149-91-123.ngrok-free.app', // Your ngrok URL
-    });
-
     if (addOptions) {
       (Object.keys(addOptions) as (keyof ISearchLocationOptions)[]).forEach(
         (key) => {
@@ -34,8 +31,11 @@ export class TripadvisorService {
       );
     }
 
-    return this.http.get(`${BASE_API_URL}location/search?key=`, {
-      params,
-    });
+    return this.http.get<ILocatioSearch>(
+      `http://localhost:3000/proxy/search/`,
+      {
+        params,
+      }
+    );
   }
 }
