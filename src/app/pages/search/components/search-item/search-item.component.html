@@ -1,0 +1,26 @@
+<nz-card
+  class="search__list-item"
+  [nzTitle]="'id: ' + locationSig().location_id + ''"
+  [nzExtra]="extraTemplate"
+  searchAnimation
+>
+  <p class="search__list-item__field">
+    <span>Name:</span> {{ locationSig().name }}
+  </p>
+  <p class="search__list-item__field">
+    <span>Country:</span> {{ locationSig().address_obj.country }}
+  </p>
+  <p class="search__list-item__field">
+    <span>City:</span> {{ locationSig().address_obj.city }}
+  </p>
+  <p class="search__list-item__field">
+    <span>Address string:</span> {{ locationSig().address_obj.address_string }}
+  </p>
+</nz-card>
+<ng-template #extraTemplate>
+  <a
+    [routerLink]="['/location', locationSig().location_id]"
+    class="search__list-item__link"
+    >More about place</a
+  >
+</ng-template>

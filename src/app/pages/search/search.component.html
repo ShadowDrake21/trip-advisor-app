@@ -1,33 +1,16 @@
 <section class="search">
   <div class="seacrh__container container">
+    <input
+      nz-input
+      placeholder="Search a location..."
+      class="search__input"
+      type="search"
+      [formControl]="searchFormControl"
+    />
     @if(searchLocationsSig()?.data; as searchLocations) {
-    {{ searchLocations | json }}
-
     <div class="search__list">
       @for (location of searchLocations; track location.location_id) {
-      <nz-card
-        class="search__list-item"
-        [nzTitle]="'id: ' + location.location_id + ''"
-        [nzExtra]="extraTemplate"
-      >
-        <p class="search__list-item__field">Name: {{ location.name }}</p>
-        <p class="search__list-item__field">
-          Country: {{ location.address_obj.country }}
-        </p>
-        <p class="search__list-item__field">
-          City: {{ location.address_obj.city }}
-        </p>
-        <p class="search__list-item__field">
-          Address string: {{ location.address_obj.address_string }}
-        </p>
-      </nz-card>
-      <ng-template #extraTemplate>
-        <a
-          [routerLink]="['/location', location.location_id]"
-          class="search__list-item__link"
-          >More about place</a
-        > </ng-template
-      >}
+      <app-search-item [location]="location"></app-search-item>}
     </div>
     }
   </div>

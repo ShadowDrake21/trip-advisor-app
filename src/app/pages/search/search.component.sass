@@ -1,44 +1,17 @@
 .search
+  padding: 20px 0
 
 .seacrh__container
+
+.search__input
+  width: 100%
+  padding: 10px 15px
+  font-size: 18px
+  line-height: 1.3
+  margin-bottom: 15px
 
 .search__list
   display: grid
   grid-template-columns: repeat(3, 1fr)
   gap: 20px 15px
   flex-wrap: wrap
-
-.search__list-item
-  display: block
-  width: 100%
-  padding: 10px
-  border: 1px solid #000
-  font-size: 16px
-  line-height: 1.2
-  background: #ece9e6
-  background: -webkit-linear-gradient(to right, #ece9e6, #ffffff)
-  background: linear-gradient(to right, #ece9e6, #ffffff)
-  background-size: 200% 200%
-  background-position: 0% 50%
-  transition: 0.5s all
-
-.search__list-item:hover
-  animation: GradientBackground 1.4s ease-in-out infinite
-
-.search__list-item__field
-
-.search__list-item__link
-  display: flex
-  justify-content: flex-end
-  color: #063970
-  font-weight: 600
-
-  @keyframes GradientBackground
-    0%
-      background-position: 0% 50%
-
-    50%
-      background-position: 100% 50%
-
-    100%
-      background-position: 0% 50%
