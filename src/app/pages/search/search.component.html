@@ -1,12 +1,75 @@
 <section class="search">
   <div class="seacrh__container container">
-    <input
-      nz-input
-      placeholder="Search a location..."
-      class="search__input"
-      type="search"
-      [formControl]="searchFormControl"
-    />
+    <form
+      nz-form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmit()"
+      class="search__form"
+    >
+      <nz-form-item
+        ><input
+          nz-input
+          placeholder="Search a location..."
+          class="search__form-input"
+          type="text"
+      /></nz-form-item>
+      <div class="search__form-params">
+        <nz-form-item>
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Category"
+            class="search__form-params__item"
+          >
+            @for (category of categories | keyvalue; track category.value) {
+            <nz-option
+              [nzValue]="category.value | titlecase"
+              [nzLabel]="category.value | titlecase"
+            ></nz-option
+            >}
+          </nz-select></nz-form-item
+        >
+        <nz-form-item>
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Language"
+            class="search__form-params__item"
+          >
+            @for (language of searchLanguages; track language) {
+            <nz-option [nzValue]="language" [nzLabel]="language"></nz-option>}
+          </nz-select></nz-form-item
+        >
+        <nz-form-item>
+          <input
+            nz-input
+            placeholder="Address"
+            type="text"
+            class="search__form-params__item"
+        /></nz-form-item>
+        <nz-form-item
+          ><input
+            nz-input
+            placeholder="Phone"
+            type="tel"
+            class="search__form-params__item"
+        /></nz-form-item>
+        <div class="search__form-params__nested">
+          <nz-form-item>
+            <nz-input-number
+              [nzStep]="0.1"
+              nzPlaceHolder="Latitude"
+              class="search__form-params__item"
+            ></nz-input-number
+          ></nz-form-item>
+          <nz-form-item>
+            <nz-input-number
+              [nzStep]="0.1"
+              nzPlaceHolder="Longitude"
+              class="search__form-params__item"
+            ></nz-input-number
+          ></nz-form-item>
+        </div>
+      </div>
+    </form>
     @if(searchLocationsSig()?.data; as searchLocations) {
     <div class="search__list">
       @for (location of searchLocations; track location.location_id) {
