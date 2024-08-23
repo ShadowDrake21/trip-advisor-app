@@ -2,23 +2,25 @@
   <div class="seacrh__container container">
     <form
       nz-form
+      class="search__form"
       [formGroup]="searchForm"
       (ngSubmit)="onSubmit()"
-      class="search__form"
     >
-      <nz-form-item
+      <nz-form-item class="search__form-params__item-wrapper"
         ><input
           nz-input
           placeholder="Search a location..."
           class="search__form-input"
           type="text"
+          formControlName="query"
       /></nz-form-item>
       <div class="search__form-params">
-        <nz-form-item>
+        <nz-form-item class="search__form-params__item-wrapper">
           <nz-select
             nzAllowClear
             nzPlaceHolder="Category"
             class="search__form-params__item"
+            formControlName="category"
           >
             @for (category of categories | keyvalue; track category.value) {
             <nz-option
@@ -28,45 +30,51 @@
             >}
           </nz-select></nz-form-item
         >
-        <nz-form-item>
-          <nz-select
-            nzAllowClear
-            nzPlaceHolder="Language"
-            class="search__form-params__item"
-          >
-            @for (language of searchLanguages; track language) {
-            <nz-option [nzValue]="language" [nzLabel]="language"></nz-option>}
-          </nz-select></nz-form-item
-        >
-        <nz-form-item>
+        <nz-form-item class="search__form-params__item-wrapper">
           <input
             nz-input
             placeholder="Address"
             type="text"
             class="search__form-params__item"
+            formControlName="address"
         /></nz-form-item>
-        <nz-form-item
+        <nz-form-item class="search__form-params__item-wrapper"
           ><input
             nz-input
             placeholder="Phone"
             type="tel"
             class="search__form-params__item"
+            formControlName="phone"
         /></nz-form-item>
         <div class="search__form-params__nested">
-          <nz-form-item>
-            <nz-input-number
-              [nzStep]="0.1"
-              nzPlaceHolder="Latitude"
+          <ng-container formGroupName="coordinates">
+            <nz-form-item class="search__form-params__item-wrapper small">
+              <nz-input-number
+                [nzStep]="0.1"
+                nzPlaceHolder="Latitude"
+                class="search__form-params__item"
+                formControlName="latitude"
+              ></nz-input-number
+            ></nz-form-item>
+            <nz-form-item class="search__form-params__item-wrapper small">
+              <nz-input-number
+                [nzStep]="0.1"
+                nzPlaceHolder="Longitude"
+                class="search__form-params__item"
+                formControlName="longitude"
+              ></nz-input-number></nz-form-item
+          ></ng-container>
+          <nz-form-item class="search__form-params__item-wrapper small">
+            <nz-select
+              nzAllowClear
+              nzPlaceHolder="Language"
               class="search__form-params__item"
-            ></nz-input-number
-          ></nz-form-item>
-          <nz-form-item>
-            <nz-input-number
-              [nzStep]="0.1"
-              nzPlaceHolder="Longitude"
-              class="search__form-params__item"
-            ></nz-input-number
-          ></nz-form-item>
+              formControlName="language"
+            >
+              @for (language of searchLanguages; track language) {
+              <nz-option [nzValue]="language" [nzLabel]="language"></nz-option>}
+            </nz-select></nz-form-item
+          >
         </div>
       </div>
     </form>

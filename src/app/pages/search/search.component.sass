@@ -19,6 +19,12 @@
 .search__form-params
   display: flex
   justify-content: space-between
+  gap: 20px
+
+.search__form-params__item-wrapper
+  width: 100%
+  &.small
+    width: 120px
 
 .search__form-params__item
   width: 100%
@@ -26,9 +32,10 @@
 
 .search__form-params__nested
   display: flex
+  gap: 5px
 
 nz-select
-  margin: 0 8px 10px 0
+  margin: 0
   width: 120px
 
 nz-form-item
