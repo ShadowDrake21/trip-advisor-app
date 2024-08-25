@@ -24,7 +24,7 @@
           >
             @for (category of categories | keyvalue; track category.value) {
             <nz-option
-              [nzValue]="category.value | titlecase"
+              [nzValue]="category.value"
               [nzLabel]="category.value | titlecase"
             ></nz-option
             >}
@@ -77,8 +77,21 @@
           >
         </div>
       </div>
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        class="search__form-btn"
+        [disabled]="!searchForm.value.query"
+      >
+        <span nz-icon nzType="search"></span>
+        Search
+      </button>
     </form>
     @if(searchLocationsSig()?.data; as searchLocations) {
+    <p class="search__count">
+      <span>Total location count: </span>{{ totalLocationCount() }}
+    </p>
     <div class="search__list">
       @for (location of searchLocations; track location.location_id) {
       <app-search-item [location]="location"></app-search-item>}

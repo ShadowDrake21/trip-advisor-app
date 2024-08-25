@@ -23,10 +23,12 @@ export class TripadvisorService {
     let params = new HttpParams()
       .set('searchQuery', searchQuery)
       .set('key', environment.TRIPADVISOR_KEY);
+    console.log('addOption', addOptions);
     if (addOptions) {
       (Object.keys(addOptions) as (keyof ISearchLocationOptions)[]).forEach(
         (key) => {
           const value = addOptions[key];
+          console.log('value', value);
           if (value !== undefined) {
             params = params.set(key, value);
           }

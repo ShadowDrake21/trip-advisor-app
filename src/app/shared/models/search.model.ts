@@ -1,7 +1,7 @@
 import { Categories } from '../enums/categories.enum';
 
 export interface ISearchLocationOptions {
-  category: Categories;
+  category: string;
   phone: string;
   address: string;
   latLong: string;

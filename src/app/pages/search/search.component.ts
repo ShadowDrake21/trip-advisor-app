@@ -1,7 +1,19 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  Signal,
+  signal,
+} from '@angular/core';
 import { TripadvisorService } from '../../core/services/tripadvisor.service';
 import { Categories } from '../../shared/enums/categories.enum';
-import { ILocatioSearch } from '../../shared/models/search.model';
+import {
+  ILocatioSearch,
+  ISearchLocationOptions,
+} from '../../shared/models/search.model';
 import { JsonPipe, KeyValuePipe, TitleCasePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SearchItemComponent } from './components/search-item/search-item.component';
@@ -17,6 +29,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   filter,
+  Subscription,
   switchMap,
   tap,
 } from 'rxjs';
@@ -25,6 +38,7 @@ import { searchLanguages } from '../../shared/static/search-languages.static';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { InputDisabledDirective } from '../../shared/directives/input-disabled.directive';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-search',
@@ -42,6 +56,7 @@ import { InputDisabledDirective } from '../../shared/directives/input-disabled.d
     NzFormModule,
     TitleCasePipe,
     InputDisabledDirective,
+    NzButtonModule,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.sass',
@@ -49,78 +64,59 @@ import { InputDisabledDirective } from '../../shared/directives/input-disabled.d
 export class SearchComponent implements OnInit, OnDestroy {
   categories = Categories;
   searchLanguages = searchLanguages;
+
   private tripadvisorService = inject(TripadvisorService);
 
   searchLocationsSig = signal<ILocatioSearch | undefined>(undefined);
+  totalLocationCount: Signal<number> = computed(
+    () => this.searchLocationsSig()?.data.length ?? 0
+  );
 
   searchFormControl = new FormControl('');
 
   searchForm = new FormGroup({
     query: new FormControl('', Validators.required),
-    category: new FormControl(''),
-    address: new FormControl(''),
-    phone: new FormControl(''),
+    category: new FormControl<string | undefined>(undefined),
+    address: new FormControl<string | undefined>(undefined),
+    phone: new FormControl<string | undefined>(undefined),
     coordinates: new FormGroup({
-      latitude: new FormControl(''),
-      longitude: new FormControl(''),
+      latitude: new FormControl<number | undefined>(undefined),
+      longitude: new FormControl<number | undefined>(undefined),
     }),
-    language: new FormControl(''),
+    language: new FormControl<string | undefined>('en'),
   });
 
-  ngOnInit(): void {
-    this.checkParameters();
-    this.reactiveSearch();
-  }
+  private searchSubscription!: Subscription;
 
-  reactiveSearch() {
-    this.searchForm.valueChanges
-      .pipe(
-        debounceTime(600),
-        distinctUntilChanged(),
-        tap(() => this.checkParameters())
-        // switchMap((value) =>
-        //   this.tripadvisorService.searchLocation(value, {
-        //     category: Categories.Attractions,
-        //     language: 'pl',
-        //   })
-        // )
-      )
-      .subscribe({
-        next: (searchResult) => {
-          console.log('searchResult: ', searchResult);
-          // this.searchLocationsSig.set(searchResult);
-        },
+  ngOnInit(): void {}
+
+  onSubmit() {
+    if (!this.searchForm.value.query) {
+      return;
+    }
+
+    this.searchSubscription = this.tripadvisorService
+      .searchLocation(this.searchForm.value.query, this.formLocationObject())
+      .subscribe((result) => {
+        this.searchLocationsSig.set(result);
       });
   }
 
-  checkParameters() {
-    const controls = this.searchForm.controls;
-    const query = this.searchForm.value.query;
-
-    const toggleControls = (enable: boolean) => {
-      if (enable) {
-        controls.category.enable();
-        controls.address.enable();
-        controls.phone.enable();
-        controls.coordinates.enable();
-        controls.language.enable();
-      } else {
-        controls.category.disable();
-        controls.address.disable();
-        controls.phone.disable();
-        controls.coordinates.disable();
-        controls.language.disable();
-      }
+  formLocationObject(): Partial<ISearchLocationOptions> {
+    return {
+      category: this.searchForm.value.category ?? undefined,
+      phone: this.searchForm.value.phone ?? undefined,
+      address: this.searchForm.value.address ?? undefined,
+      latLong:
+        this.searchForm.value.coordinates?.latitude &&
+        this.searchForm.value.coordinates?.longitude
+          ? `${this.searchForm.value.coordinates?.latitude},${this.searchForm.value.coordinates?.longitude}`
+          : undefined,
+      language: this.searchForm.value.language ?? undefined,
     };
-
-    toggleControls(!!(query && query.length > 0));
-  }
-
-  onSubmit() {
-    console.log('onSubmit(): ', this.searchForm.value);
   }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.searchSubscription.unsubscribe();
   }
 }
