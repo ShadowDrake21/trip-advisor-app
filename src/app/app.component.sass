@@ -1,0 +1,64 @@
+.layout
+  background-color: #fff !important
+
+.logo
+  width: 120px
+  height: 31px
+  margin: 16px 24px 16px 0
+  float: left
+  display: flex
+  justify-content: center
+  align-items: center
+  a
+    color: #ffffffa6
+    font-size: 22px
+    line-height: 26px
+    transition: color .3s ease
+    &:hover
+      color: #fff
+
+[nz-menu]
+  display: flex
+  line-height: 64px
+  list-style: none
+
+  [nz-menu-item]
+    cursor: pointer
+    color: #ffffffa6
+    padding: 0 20px
+    transition: background-color .3s ease
+    font-size: 16px
+    &:hover
+      background-color: #1890ff
+      color: #fff
+    &.active
+      background-color: #0084ff
+      color: #fff
+
+nz-content
+  flex-grow: 1
+  min-height: 100vh
+
+nz-footer
+  text-align: center
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  a
+    padding-bottom: 2px
+    position: relative
+    color: inherit
+    &::after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: #000
+      height: 1px
+      width: 100%
+      opacity: 0
+      transition: opacity .3s ease
+    &:hover::after
+      opacity: 1

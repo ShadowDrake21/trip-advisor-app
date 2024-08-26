@@ -1,1 +1,111 @@
-<p>search works!</p>
+<section class="section search">
+  <div class="seacrh__container container">
+    <form
+      nz-form
+      class="search__form"
+      [formGroup]="searchForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <nz-form-item class="search__form-params__item-wrapper"
+        ><input
+          nz-input
+          placeholder="Search a location..."
+          class="search__form-input"
+          type="text"
+          formControlName="query"
+      /></nz-form-item>
+      <div class="search__form-params">
+        <nz-form-item class="search__form-params__item-wrapper">
+          <nz-select
+            nzAllowClear
+            nzPlaceHolder="Category"
+            class="search-select search__form-params__item"
+            formControlName="category"
+          >
+            @for (category of categories | keyvalue; track category.value) {
+            <nz-option
+              [nzValue]="category.value"
+              [nzLabel]="category.value | titlecase"
+            ></nz-option
+            >}
+          </nz-select></nz-form-item
+        >
+        <nz-form-item class="search__form-params__item-wrapper">
+          <input
+            nz-input
+            placeholder="Address"
+            type="text"
+            class="search__form-params__item"
+            formControlName="address"
+        /></nz-form-item>
+        <nz-form-item class="search__form-params__item-wrapper"
+          ><input
+            nz-input
+            placeholder="Phone"
+            type="tel"
+            class="search__form-params__item"
+            formControlName="phone"
+        /></nz-form-item>
+        <div class="search__form-params__nested">
+          <ng-container formGroupName="coordinates">
+            <nz-form-item class="search__form-params__item-wrapper small">
+              <nz-input-number
+                [nzStep]="0.1"
+                nzPlaceHolder="Latitude"
+                class="search__form-params__item"
+                formControlName="latitude"
+              ></nz-input-number
+            ></nz-form-item>
+            <nz-form-item class="search__form-params__item-wrapper small">
+              <nz-input-number
+                [nzStep]="0.1"
+                nzPlaceHolder="Longitude"
+                class="search__form-params__item"
+                formControlName="longitude"
+              ></nz-input-number></nz-form-item
+          ></ng-container>
+          <nz-form-item class="search__form-params__item-wrapper small">
+            <nz-select
+              nzAllowClear
+              nzPlaceHolder="Language"
+              class="search-select search__form-params__item"
+              formControlName="language"
+            >
+              @for (language of searchLanguages; track language) {
+              <nz-option [nzValue]="language" [nzLabel]="language"></nz-option>}
+            </nz-select></nz-form-item
+          >
+        </div>
+      </div>
+      <button
+        nz-button
+        nzType="primary"
+        nzSize="large"
+        class="search__form-btn"
+        [disabled]="!searchForm.value.query"
+      >
+        <span nz-icon nzType="search"></span>
+        Search
+      </button>
+    </form>
+    @if (!loadingSig()) { @if(searchLocationsSig()?.data; as searchLocations) {
+    <p class="search__count">
+      <span>Total location count: </span>{{ totalLocationCount() }}
+    </p>
+    <div class="search__list">
+      @for (location of searchLocations; track location.location_id) {
+      <app-search-item [location]="location"></app-search-item>}
+    </div>
+    } @if (!searchLocationsSig()?.data?.length) {
+    <background-template
+      classes="default-background background"
+      title="There are no results..."
+    ></background-template>
+    }} @else {
+    <background-template
+      classes="loading-background background"
+      title="Loading..."
+    ></background-template>
+    }
+  </div>
+</section>
