@@ -3,6 +3,10 @@
 *, *::after, *::before
   box-sizing: border-box
 
+p
+  margin: 0
+  padding: 0
+
 body
   padding: 0px
   margin: 0px
@@ -12,6 +16,29 @@ body
   padding: 0 10px
   margin: 0 auto
 
+.section
+  padding: 20px 0 90px
+
+.background
+  height: 75vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+
+.default-background
+  background-image: url('../public/images/default-background.jpg')
+
+.loading-background
+  background-image: url('../public/images/loading-background.jpg')
+
+.layout
+  position: relative
+  height: 100%
+
 // libraries styles modifications
 .ant-input-number-handler-wrap
   height: 30px !important
+// libraries styles modifications

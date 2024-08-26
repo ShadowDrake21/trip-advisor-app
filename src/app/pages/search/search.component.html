@@ -1,4 +1,4 @@
-<section class="search">
+<section class="section search">
   <div class="seacrh__container container">
     <form
       nz-form
@@ -19,7 +19,7 @@
           <nz-select
             nzAllowClear
             nzPlaceHolder="Category"
-            class="search__form-params__item"
+            class="search-select search__form-params__item"
             formControlName="category"
           >
             @for (category of categories | keyvalue; track category.value) {
@@ -68,7 +68,7 @@
             <nz-select
               nzAllowClear
               nzPlaceHolder="Language"
-              class="search__form-params__item"
+              class="search-select search__form-params__item"
               formControlName="language"
             >
               @for (language of searchLanguages; track language) {
@@ -88,7 +88,7 @@
         Search
       </button>
     </form>
-    @if(searchLocationsSig()?.data; as searchLocations) {
+    @if (!loadingSig()) { @if(searchLocationsSig()?.data; as searchLocations) {
     <p class="search__count">
       <span>Total location count: </span>{{ totalLocationCount() }}
     </p>
@@ -96,6 +96,16 @@
       @for (location of searchLocations; track location.location_id) {
       <app-search-item [location]="location"></app-search-item>}
     </div>
+    } @if (!searchLocationsSig()?.data?.length) {
+    <background-template
+      classes="default-background background"
+      title="There are no results..."
+    ></background-template>
+    }} @else {
+    <background-template
+      classes="loading-background background"
+      title="Loading..."
+    ></background-template>
     }
   </div>
 </section>

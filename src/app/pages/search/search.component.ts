@@ -1,7 +1,6 @@
 import {
   Component,
   computed,
-  DestroyRef,
   inject,
   OnDestroy,
   OnInit,
@@ -25,20 +24,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  Subscription,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { searchLanguages } from '../../shared/static/search-languages.static';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { InputDisabledDirective } from '../../shared/directives/input-disabled.directive';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { BackgroundTemplateComponent } from '../../shared/components/background-template/background-template.component';
 
 @Component({
   selector: 'app-search',
@@ -57,6 +50,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     TitleCasePipe,
     InputDisabledDirective,
     NzButtonModule,
+    BackgroundTemplateComponent,
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.sass',
@@ -71,6 +65,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   totalLocationCount: Signal<number> = computed(
     () => this.searchLocationsSig()?.data.length ?? 0
   );
+  loadingSig = signal<boolean>(false);
 
   searchFormControl = new FormControl('');
 
@@ -95,10 +90,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.loadingSig.set(true);
     this.searchSubscription = this.tripadvisorService
       .searchLocation(this.searchForm.value.query, this.formLocationObject())
       .subscribe((result) => {
         this.searchLocationsSig.set(result);
+        this.loadingSig.set(false);
       });
   }
 
@@ -117,6 +114,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.searchSubscription.unsubscribe();
+    if (this.searchSubscription) this.searchSubscription.unsubscribe();
   }
 }
