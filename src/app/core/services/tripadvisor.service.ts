@@ -2,11 +2,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Inject, inject, Injectable } from '@angular/core';
 import { BASE_API_URL } from '../constants/tripadvisor.constants';
 import {
-  ILocatioSearch,
+  ILocationSearch,
   ISearchLocationOptions,
 } from '../../shared/models/search.model';
 import { environment } from '../../../environments/environment.development';
 import { PROXY_CONFIG_TOKEN } from '../../shared/configs/tokens.configs';
+import { ILocation } from '../../shared/models/location.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,8 +37,14 @@ export class TripadvisorService {
       );
     }
 
-    return this.http.get<ILocatioSearch>(`${this.proxyToken}proxy/search/`, {
+    return this.http.get<ILocationSearch>(`${this.proxyToken}proxy/search/`, {
       params,
+    });
+  }
+
+  getLocationDetails(locationId: string, language: string = 'en') {
+    return this.http.get<ILocation>(`${this.proxyToken}proxy/details/`, {
+      params: { id: locationId, language },
     });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NzCardComponent, NzCardMetaComponent } from 'ng-zorro-antd/card';
-import { ILocatioSearchItem } from '../../../../shared/models/search.model';
+import { ILocationSearchItem } from '../../../../shared/models/search.model';
 import { SearchAnimationDirective } from '../../../../shared/directives/search-animation.directive';
 
 @Component({
@@ -17,5 +17,5 @@ import { SearchAnimationDirective } from '../../../../shared/directives/search-a
   styleUrl: './search-item.component.sass',
 })
 export class SearchItemComponent {
-  locationSig = input.required<ILocatioSearchItem>({ alias: 'location' });
+  locationSig = input.required<ILocationSearchItem>({ alias: 'location' });
 }

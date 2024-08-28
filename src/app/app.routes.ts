@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { locationResolver } from './core/resolvers/location.resolver';
+import { catchError, map, of } from 'rxjs';
+import { ILocation } from './shared/models/location.model';
 
 export const routes: Routes = [
   {
@@ -22,6 +25,10 @@ export const routes: Routes = [
       import('./pages/location/location.component').then(
         (c) => c.LocationComponent
       ),
+    resolve: { location: locationResolver },
+    title: (route) => {
+      return `Location - ${route.url[1].path}`;
+    },
   },
   {
     path: 'not-found',

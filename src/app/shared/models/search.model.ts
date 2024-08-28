@@ -8,20 +8,20 @@ export interface ISearchLocationOptions {
   language: string;
 }
 
-export interface ILocatioSearch {
-  data: ILocatioSearchItem[];
+export interface ILocationSearch {
+  data: ILocationSearchItem[];
   error: Error;
 }
 
-export interface ILocatioSearchItem {
+export interface ILocationSearchItem {
   location_id: number;
   name: string;
   distance: string;
   bearing: string;
-  address_obj: ILocatioSearchItemAddress;
+  address_obj: ILocationSearchItemAddress;
 }
 
-export interface ILocatioSearchItemAddress {
+export interface ILocationSearchItemAddress {
   street1: string;
   street2: string;
   city: string;
@@ -31,7 +31,7 @@ export interface ILocatioSearchItemAddress {
   address_string: string;
 }
 
-export interface ILocatioSearchItemError {
+export interface ILocationSearchItemError {
   message: string;
   type: string;
   code: number;

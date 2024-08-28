@@ -10,7 +10,7 @@ import {
 import { TripadvisorService } from '../../core/services/tripadvisor.service';
 import { Categories } from '../../shared/enums/categories.enum';
 import {
-  ILocatioSearch,
+  ILocationSearch,
   ISearchLocationOptions,
 } from '../../shared/models/search.model';
 import { JsonPipe, KeyValuePipe, TitleCasePipe } from '@angular/common';
@@ -61,7 +61,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private tripadvisorService = inject(TripadvisorService);
 
-  searchLocationsSig = signal<ILocatioSearch | undefined>(undefined);
+  searchLocationsSig = signal<ILocationSearch | undefined>(undefined);
   totalLocationCount: Signal<number> = computed(
     () => this.searchLocationsSig()?.data.length ?? 0
   );
