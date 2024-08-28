@@ -1,1 +1,91 @@
 <p>{{ locationDetails$ | async | json }}</p>
+<section class="section">
+  <div>
+    @if (locationDetails$ | async; as locationDetails) {
+    <h1>{{ locationDetails.name }}</h1>
+    <h2>{{ locationDetails.category.localized_name }} {{ locationDetails.category.name }}</h2>
+    <p>{{ locationDetails.description }}</p>
+    <p>{{ locationDetails.rating }}</p>
+    <p>{{ locationDetails.address_obj | json }}</p>
+    <div>
+      @for(amenity of locationDetails.amenities; track amenity) {
+      {{ amenity }} }
+    </div>
+    <div>
+      @for(ancestor of locationDetails.ancestors; track ancestor) {
+      <p>
+        {{ ancestor.name }} {{ ancestor.level }} {{ ancestor.abbrv }}
+        {{ ancestor.name }}
+      </p>
+      }
+    </div>
+    <p> @for(award of locationDetails.awards; track award) {
+      <p>
+       {{award.award_type}}
+      </p>
+      <div><p>
+        @for(category of award.categories; track category) {
+          {{category}}
+        }
+      </p></div>
+      {{award.display_name}}
+      <img [src]="award.images.large" alt="award img">
+      {{award.year}}
+      }</p>
+    <p>{{ locationDetails.brand }}</p>
+    @for (cuisine of locationDetails.cuisine; track cuisine) {
+
+      <p>{{ cuisine }}</p>
+    }
+    <p>{{ locationDetails.email }}</p>
+    @for (feature of locationDetails.features; track feature) {
+
+      <p>{{ feature }}</p>
+    }
+    @for (group of locationDetails.groups; track group) {
+
+      <p>{{ group.localized_name }} {{ group.name }} </p>
+      @for (category of group.categories; track category) {
+        <p>{{ category.localized_name }} {{ category.name }} </p>
+      }
+    }
+
+
+    <p *ngIf="locationDetails.hours"> @for (weekday_text of locationDetails.hours.weekday_text; track weekday_text) {
+      <p>{{weekday_text}}</p>
+    }
+      @for (period of locationDetails.hours.periods; track period) {
+        <p>{{period.open}} {{period.close}}</p>
+      }
+    </p>
+    <p>{{ locationDetails.latitude }}</p>
+    @for (neighborhood of locationDetails.neighborhood_info; track neighborhood) {
+      <p>{{neighborhood.location_id}} {{neighborhood.name}}</p>
+    }
+    <p>{{ locationDetails.num_reviews }}</p>
+    <p>{{ locationDetails.parent_brand }}</p>
+    <p>{{ locationDetails.phone }}</p>
+    <p>{{ locationDetails.photo_count }}</p>
+    <p>{{ locationDetails.price_level }}</p>
+    <p>{{ locationDetails.ranking_data }}</p>
+    <p>{{ locationDetails.rating }}</p>
+    <img [src]="locationDetails.rating_image_url" alt="rating-image-url">
+    <p>{{locationDetails.review_rating_count}}</p>
+    <p>{{locationDetails.see_all_photos}}</p>
+    @for (style of locationDetails.styles; track style) {
+      <p>{{locationDetails.styles}}</p>
+    }
+    @for ( subcategory of locationDetails.subcategory; track subcategory) {
+      <p>{{subcategory.localized_name}} {{subcategory.name}}</p>
+    }
+    <p *ngIf="locationDetails.subratings">{{locationDetails.subratings.additionalProp.localized_name}} {{locationDetails.subratings.additionalProp.name}} {{locationDetails.subratings.additionalProp.rating_image_url}} {{locationDetails.subratings.additionalProp.value}}</p>
+    <p>{{locationDetails.timezone}}</p>
+    @for (trip_type of locationDetails.trip_types; track trip_type) {
+      <p>{{trip_type.localized_name}} {{trip_type.name}} {{trip_type.value}}</p>
+    }
+    <a [href]="locationDetails.web_url">{{locationDetails.web_url}}</a>
+    <p>{{locationDetails.website}}</p>
+    <p>{{locationDetails.write_review}}</p>
+    }
+  </div>
+</section>

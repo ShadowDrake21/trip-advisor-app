@@ -10,7 +10,7 @@ export interface ISearchLocationOptions {
 
 export interface ILocationSearch {
   data: ILocationSearchItem[];
-  error: Error;
+  error: ILocationSearchError;
 }
 
 export interface ILocationSearchItem {
@@ -31,7 +31,7 @@ export interface ILocationSearchItemAddress {
   address_string: string;
 }
 
-export interface ILocationSearchItemError {
+export interface ILocationSearchError {
   message: string;
   type: string;
   code: number;

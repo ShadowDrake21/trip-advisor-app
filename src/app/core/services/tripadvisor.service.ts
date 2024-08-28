@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, inject, Injectable } from '@angular/core';
-import { BASE_API_URL } from '../constants/tripadvisor.constants';
 import {
   ILocationSearch,
   ISearchLocationOptions,
@@ -8,6 +7,11 @@ import {
 import { environment } from '../../../environments/environment.development';
 import { PROXY_CONFIG_TOKEN } from '../../shared/configs/tokens.configs';
 import { ILocation } from '../../shared/models/location.model';
+import { Observable } from 'rxjs';
+import {
+  ILocationPhotos,
+  ILocationPhotosOptions,
+} from '../../shared/models/location-photos.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,10 +24,9 @@ export class TripadvisorService {
   searchLocation(
     searchQuery: string,
     addOptions?: Partial<ISearchLocationOptions>
-  ) {
-    let params = new HttpParams()
-      .set('searchQuery', searchQuery)
-      .set('key', environment.TRIPADVISOR_KEY);
+  ): Observable<ILocationSearch> {
+    let params = new HttpParams().set('searchQuery', searchQuery);
+
     console.log('addOption', addOptions);
     if (addOptions) {
       (Object.keys(addOptions) as (keyof ISearchLocationOptions)[]).forEach(
@@ -37,14 +40,41 @@ export class TripadvisorService {
       );
     }
 
-    return this.http.get<ILocationSearch>(`${this.proxyToken}proxy/search/`, {
+    return this.http.get<ILocationSearch>(`${this.proxyToken}proxy/search`, {
       params,
     });
   }
 
-  getLocationDetails(locationId: string, language: string = 'en') {
-    return this.http.get<ILocation>(`${this.proxyToken}proxy/details/`, {
+  getLocationDetails(
+    locationId: string,
+    language: string = 'en'
+  ): Observable<ILocation> {
+    return this.http.get<ILocation>(`${this.proxyToken}proxy/details`, {
       params: { id: locationId, language },
+    });
+  }
+
+  getLocationPhotos(
+    locationId: string,
+    additionalOptions: Partial<ILocationPhotosOptions> = {
+      limit: 5,
+      offset: 0,
+      language: 'en',
+    }
+  ) {
+    let params = new HttpParams().set('id', locationId);
+
+    (
+      Object.keys(additionalOptions) as (keyof ILocationPhotosOptions)[]
+    ).forEach((key) => {
+      const value = additionalOptions[key];
+      console.log('value', value);
+      if (value !== undefined) {
+        params = params.set(key, value);
+      }
+    });
+    this.http.get<ILocationPhotos>(`${this.proxyToken}proxy/photos`, {
+      params,
     });
   }
 }
