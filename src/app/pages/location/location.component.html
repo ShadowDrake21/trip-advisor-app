@@ -215,6 +215,8 @@
       <a [href]="locationDetails.website">Website</a>
       <a [href]="locationDetails.write_review">Write a review</a>
     </div>
+    } @if ((locationPhotos$ | async)?.data; as photos) {
+    <app-photos-list [photos]="photos"></app-photos-list>
     }
   </div>
 </section>

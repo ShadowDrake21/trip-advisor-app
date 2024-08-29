@@ -19,11 +19,11 @@ export interface ILocationPhotosData {
   published_date: string;
   images: ILocationPhotosArray;
   source: ILocationPhotosSource;
-  user: ILocationPhotosUser;
+  user: Partial<ILocationPhotosUser>;
 }
 
 export interface ILocationPhotosArray {
-  additionalProp: ILocationPhotosArrayItem;
+  [type: string]: ILocationPhotosArrayItem;
 }
 
 export interface ILocationPhotosArrayItem {

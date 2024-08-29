@@ -1,3 +1,4 @@
+import { ILocationPhotos } from '../models/location-photos.model';
 import { ILocation } from '../models/location.model';
 
 export const staticLocation: Partial<ILocation> = {
@@ -126,6 +127,191 @@ export const staticLocation: Partial<ILocation> = {
       },
       categories: [],
       display_name: 'Travelers Choice',
+    },
+  ],
+};
+
+export const locationPhotos: Partial<ILocationPhotos> = {
+  data: [
+    {
+      id: 79352808,
+      is_blessed: false,
+      caption: 'Statue of Liberty, Holding book in left hand',
+      published_date: '2013-10-26T00:49:09.793Z',
+      images: {
+        thumbnail: {
+          height: 50,
+          width: 50,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-t/04/ba/d3/e8/statue-of-liberty_rotated_90.jpg',
+        },
+        small: {
+          height: 150,
+          width: 150,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-l/04/ba/d3/e8/statue-of-liberty_rotated_90.jpg',
+        },
+        medium: {
+          height: 200,
+          width: 180,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-i/04/ba/d3/e8/statue-of-liberty_rotated_90.jpg',
+        },
+        large: {
+          height: 450,
+          width: 338,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-s/04/ba/d3/e8/statue-of-liberty_rotated_90.jpg',
+        },
+        original: {
+          height: 2000,
+          width: 1500,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-o/04/ba/d3/e8/statue-of-liberty_rotated_90.jpg',
+        },
+      },
+      album: 'Other',
+      source: { name: 'Traveler', localized_name: 'Traveler' },
+      user: { username: 'loki_knows' },
+    },
+    {
+      id: 759434924,
+      is_blessed: false,
+      caption: '',
+      published_date: '2024-08-26T01:06:40.955Z',
+      images: {
+        thumbnail: {
+          height: 50,
+          width: 50,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-t/2d/44/0e/ac/caption.jpg',
+        },
+        small: {
+          height: 150,
+          width: 150,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-l/2d/44/0e/ac/caption.jpg',
+        },
+        medium: {
+          height: 200,
+          width: 180,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-i/2d/44/0e/ac/caption.jpg',
+        },
+        large: {
+          height: 450,
+          width: 338,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-s/2d/44/0e/ac/caption.jpg',
+        },
+        original: {
+          height: 1365,
+          width: 1024,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-w/2d/44/0e/ac/caption.jpg',
+        },
+      },
+      album: 'Other',
+      source: { name: 'Traveler', localized_name: 'Traveler' },
+      user: { username: 'hjsj2204' },
+    },
+    {
+      id: 759434923,
+      is_blessed: false,
+      caption: '',
+      published_date: '2024-08-26T01:06:40.937Z',
+      images: {
+        thumbnail: {
+          height: 50,
+          width: 50,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-t/2d/44/0e/ab/caption.jpg',
+        },
+        small: {
+          height: 150,
+          width: 150,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-l/2d/44/0e/ab/caption.jpg',
+        },
+        medium: {
+          height: 200,
+          width: 180,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-i/2d/44/0e/ab/caption.jpg',
+        },
+        large: {
+          height: 450,
+          width: 338,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-s/2d/44/0e/ab/caption.jpg',
+        },
+        original: {
+          height: 1365,
+          width: 1024,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-w/2d/44/0e/ab/caption.jpg',
+        },
+      },
+      album: 'Other',
+      source: { name: 'Traveler', localized_name: 'Traveler' },
+      user: { username: 'hjsj2204' },
+    },
+    {
+      id: 759434922,
+      is_blessed: false,
+      caption: '',
+      published_date: '2024-08-26T01:06:40.924Z',
+      images: {
+        thumbnail: {
+          height: 50,
+          width: 50,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-t/2d/44/0e/aa/caption.jpg',
+        },
+        small: {
+          height: 150,
+          width: 150,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-l/2d/44/0e/aa/caption.jpg',
+        },
+        medium: {
+          height: 200,
+          width: 180,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-i/2d/44/0e/aa/caption.jpg',
+        },
+        large: {
+          height: 450,
+          width: 338,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-s/2d/44/0e/aa/caption.jpg',
+        },
+        original: {
+          height: 1365,
+          width: 1024,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-w/2d/44/0e/aa/caption.jpg',
+        },
+      },
+      album: 'Other',
+      source: { name: 'Traveler', localized_name: 'Traveler' },
+      user: { username: 'hjsj2204' },
+    },
+    {
+      id: 759434921,
+      is_blessed: false,
+      caption: '',
+      published_date: '2024-08-26T01:06:40.909Z',
+      images: {
+        thumbnail: {
+          height: 50,
+          width: 50,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-t/2d/44/0e/a9/caption.jpg',
+        },
+        small: {
+          height: 150,
+          width: 150,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-l/2d/44/0e/a9/caption.jpg',
+        },
+        medium: {
+          height: 200,
+          width: 180,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-i/2d/44/0e/a9/caption.jpg',
+        },
+        large: {
+          height: 450,
+          width: 338,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-s/2d/44/0e/a9/caption.jpg',
+        },
+        original: {
+          height: 1365,
+          width: 1024,
+          url: 'https://media-cdn.tripadvisor.com/media/photo-w/2d/44/0e/a9/caption.jpg',
+        },
+      },
+      album: 'Other',
+      source: { name: 'Traveler', localized_name: 'Traveler' },
+      user: { username: 'hjsj2204' },
     },
   ],
 };

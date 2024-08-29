@@ -61,7 +61,7 @@ export class TripadvisorService {
       offset: 0,
       language: 'en',
     }
-  ) {
+  ): Observable<ILocationPhotos> {
     let params = new HttpParams().set('id', locationId);
 
     (
@@ -73,7 +73,7 @@ export class TripadvisorService {
         params = params.set(key, value);
       }
     });
-    this.http.get<ILocationPhotos>(`${this.proxyToken}proxy/photos`, {
+    return this.http.get<ILocationPhotos>(`${this.proxyToken}proxy/photos`, {
       params,
     });
   }

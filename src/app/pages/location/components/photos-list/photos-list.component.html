@@ -1,0 +1,23 @@
+<h2>Photos of the location</h2>
+<div class="location__photos-list">
+  @for (photo of photos(); track photo.id) {
+  <nz-card nzHoverable class="location__photos-card" [nzCover]="coverTemplate">
+    <nz-card-meta
+      [nzTitle]="photo.caption || 'Photo'"
+      [nzDescription]="descriptionTemplate"
+    ></nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img
+      class="location__photos-card__img"
+      [src]="photo.images['original'].url"
+      alt="location img"
+    />
+  </ng-template>
+  <ng-template #descriptionTemplate>
+    <p>Date: {{ photo.published_date | date : "medium" }}</p>
+    <p>By {{ photo.user.username ?? "Unknown user" }}</p>
+    <p>Album: {{ photo.album || "default" }}</p>
+    <p>{{ photo.source.name }}</p> </ng-template
+  >}
+</div>
