@@ -39,7 +39,7 @@ export interface ILocation {
 
 export interface ILocationAddress {
   street1: string;
-  street2: string;
+  street2?: string;
   city: string;
   state: string;
   country: string;
@@ -48,7 +48,7 @@ export interface ILocationAddress {
 }
 
 export interface ILocationAncestor {
-  abbrv: string;
+  abbrv?: string;
   level: string;
   name: string;
   location_id: number;
@@ -63,7 +63,7 @@ export interface ILocationRankingData {
 }
 
 export interface ILocationReviewRatingCount {
-  additionalProp: string;
+  [mark: string]: number;
 }
 
 export interface ILocationSubratings {
