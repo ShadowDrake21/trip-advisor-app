@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
@@ -54,6 +55,7 @@ import { BackgroundTemplateComponent } from '../../shared/components/background-
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.sass',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnInit, OnDestroy {
   categories = Categories;

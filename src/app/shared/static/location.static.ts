@@ -1,4 +1,5 @@
 import { ILocationPhotos } from '../models/location-photos.model';
+import { ILocationReviews } from '../models/location-review.model';
 import { ILocation } from '../models/location.model';
 
 export const staticLocation: Partial<ILocation> = {
@@ -312,6 +313,228 @@ export const locationPhotos: Partial<ILocationPhotos> = {
       album: 'Other',
       source: { name: 'Traveler', localized_name: 'Traveler' },
       user: { username: 'hjsj2204' },
+    },
+  ],
+};
+
+export const locationReviews: Partial<ILocationReviews> = {
+  data: [
+    {
+      id: 966758532,
+      lang: 'en',
+      location_id: 103887,
+      published_date: '2024-08-25T21:06:42Z',
+      rating: 5,
+      helpful_votes: 0,
+      rating_image_url:
+        'https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg',
+      url: 'https://www.tripadvisor.com/ShowUserReviews-g60763-d103887-r966758532-Reviews-Statue_of_Liberty-New_York_City_New_York.html?m=66827#review966758532',
+      text: 'Planned ahead and booked the crown tickets 3 months in advance to the date we travelled. Surprised how reasonable the price was, that included the ferry cruise , entry onto the pedestal and to climb up into her crown ! \nIt was an incredible experience. Well supervised and very safe to do so. Climbed the winding staircase up and down with plenty of safe opportunities to stop and rest on the way. \nJust took my breath away when you look out of the mini windows and take in where you actually are …. In the crown !!',
+      title:
+        'We booked the crown tickets and my word it was an incredible experience!',
+      trip_type: 'Couples',
+      travel_date: '2024-08-31',
+      user: {
+        username: 'hjsj2204',
+        user_location: {
+          id: '186422',
+          name: 'Evesham, Worcestershire, England',
+        },
+        avatar: {
+          thumbnail:
+            'https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/f4/20/default-avatar-2020-31.jpg',
+          small:
+            'https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/f4/20/default-avatar-2020-31.jpg',
+          medium:
+            'https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/f4/20/default-avatar-2020-31.jpg',
+          large:
+            'https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/f4/20/default-avatar-2020-31.jpg',
+          original:
+            'https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/f4/20/default-avatar-2020-31.jpg',
+        },
+      },
+      owner_response: {
+        id: 0,
+        lang: '',
+        text: '',
+        title: '',
+        author: '',
+        published_date: '',
+      },
+      is_machine_translated: false,
+      subratings: {},
+    },
+    {
+      id: 966586162,
+      lang: 'en',
+      location_id: 103887,
+      published_date: '2024-08-24T20:47:21Z',
+      rating: 5,
+      helpful_votes: 1,
+      rating_image_url:
+        'https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg',
+      url: 'https://www.tripadvisor.com/ShowUserReviews-g60763-d103887-r966586162-Reviews-Statue_of_Liberty-New_York_City_New_York.html?m=66827#review966586162',
+      text: 'Had a great relaxing trip to the Statue of Liberty today with the family. It was fun and a relaxing boat trip. We had to pay extra to go inside which wasn’t included in the online booking but it’s okay it’s boring as been there more than 30 years ago & it was pretty boring. A nice day out thank you',
+      title: 'Statue of Liberty with the kids',
+      trip_type: 'Family',
+      travel_date: '2024-08-31',
+      user: {
+        username: 'jennifah2023',
+        user_location: {
+          id: '186338',
+          name: 'London, England',
+        },
+        avatar: {
+          thumbnail:
+            'https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e2/a7/default-avatar-2020-44.jpg',
+          small:
+            'https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e2/a7/default-avatar-2020-44.jpg',
+          medium:
+            'https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e2/a7/default-avatar-2020-44.jpg',
+          large:
+            'https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e2/a7/default-avatar-2020-44.jpg',
+          original:
+            'https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e2/a7/default-avatar-2020-44.jpg',
+        },
+      },
+      owner_response: {
+        id: 0,
+        lang: '',
+        text: '',
+        title: '',
+        author: '',
+        published_date: '',
+      },
+      is_machine_translated: false,
+      subratings: {},
+    },
+    {
+      id: 966329073,
+      lang: 'en',
+      location_id: 103887,
+      published_date: '2024-08-23T09:00:18Z',
+      rating: 5,
+      helpful_votes: 0,
+      rating_image_url:
+        'https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg',
+      url: 'https://www.tripadvisor.com/ShowUserReviews-g60763-d103887-r966329073-Reviews-Statue_of_Liberty-New_York_City_New_York.html?m=66827#review966329073',
+      text: 'The statue of Liberty is an iconic symbol of freedom and democracy. Standing tall in New York harbor. Visiting this majestic monument offers stunning views and deep sense of history',
+      title: 'Stunning views and deep sense of history',
+      trip_type: 'Couples',
+      travel_date: '2024-07-31',
+      user: {
+        username: 'andrewcW2236SB',
+        user_location: {
+          id: '60763',
+          name: 'New York City, New York',
+        },
+        avatar: {
+          thumbnail:
+            'https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/ec/a2/default-avatar-2020-3.jpg',
+          small:
+            'https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/ec/a2/default-avatar-2020-3.jpg',
+          medium:
+            'https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/ec/a2/default-avatar-2020-3.jpg',
+          large:
+            'https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/ec/a2/default-avatar-2020-3.jpg',
+          original:
+            'https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/ec/a2/default-avatar-2020-3.jpg',
+        },
+      },
+      owner_response: {
+        id: 0,
+        lang: '',
+        text: '',
+        title: '',
+        author: '',
+        published_date: '',
+      },
+      is_machine_translated: false,
+      subratings: {},
+    },
+    {
+      id: 965559215,
+      lang: 'en',
+      location_id: 103887,
+      published_date: '2024-08-18T23:53:17Z',
+      rating: 5,
+      helpful_votes: 0,
+      rating_image_url:
+        'https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg',
+      url: 'https://www.tripadvisor.com/ShowUserReviews-g60763-d103887-r965559215-Reviews-Statue_of_Liberty-New_York_City_New_York.html?m=66827#review965559215',
+      text: 'Our cruise ship passed by this iconic statue and the views were terrific and very moving.  Always a pleasure to see for its beauty and its symbolic importance.  Lots of great opportunities to see the statue from the Harbor, best views.  it is big and it is grand.',
+      title: 'Statue in the Harbor',
+      trip_type: 'Couples',
+      travel_date: '2024-08-31',
+      user: {
+        username: 'TV2451',
+        user_location: {
+          id: '32810',
+          name: 'Oakland, California',
+        },
+        avatar: {
+          thumbnail:
+            'https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e3/1f/default-avatar-2020-46.jpg',
+          small:
+            'https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e3/1f/default-avatar-2020-46.jpg',
+          medium:
+            'https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e3/1f/default-avatar-2020-46.jpg',
+          large:
+            'https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e3/1f/default-avatar-2020-46.jpg',
+          original:
+            'https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e3/1f/default-avatar-2020-46.jpg',
+        },
+      },
+      owner_response: {
+        id: 0,
+        lang: '',
+        text: '',
+        title: '',
+        author: '',
+        published_date: '',
+      },
+      is_machine_translated: false,
+      subratings: {},
+    },
+    {
+      id: 965553768,
+      lang: 'en',
+      location_id: 103887,
+      published_date: '2024-08-18T22:18:48Z',
+      rating: 5,
+      helpful_votes: 0,
+      rating_image_url:
+        'https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg',
+      url: 'https://www.tripadvisor.com/ShowUserReviews-g60763-d103887-r965553768-Reviews-Statue_of_Liberty-New_York_City_New_York.html?m=66827#review965553768',
+      text: 'We managed to get Crown Access tickets this time, we booked 5 months in advance to get them and it’s well worth it.\n\nIt’s really worthwhile paying a relatively small amount to visit the Statue and Ellis island rather than take the free staten island ferry.\n\nThe spiral staircase to the top is pretty tight, we found you end up queuing 1/2 way up so we didn’t find it too tiring.\n\nThe crown is really small, surprising small, great views and well worth it, but the climb down I found more difficult, the stairs are narrow and steep, I actually went backwards down them, it’s August and very hot inside.\n\nBrilliant experience and well worth it.',
+      title: 'Crown access well worth it',
+      trip_type: 'Family',
+      travel_date: '2024-08-31',
+      user: {
+        username: 'LadAndHisTravels',
+        user_location: {
+          id: '187046',
+          name: 'Harrogate, North Yorkshire, England',
+        },
+        avatar: {
+          thumbnail:
+            'https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/89/avatar010.jpg',
+          small:
+            'https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/89/avatar010.jpg',
+          medium:
+            'https://media-cdn.tripadvisor.com/media/photo-f/01/2e/70/89/avatar010.jpg',
+        },
+      },
+      owner_response: {
+        id: 0,
+        lang: '',
+        text: '',
+        title: '',
+        author: '',
+        published_date: '',
+      },
+      is_machine_translated: false,
+      subratings: {},
     },
   ],
 };

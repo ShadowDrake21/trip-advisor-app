@@ -217,6 +217,10 @@
     </div>
     } @if ((locationPhotos$ | async)?.data; as photos) {
     <app-photos-list [photos]="photos"></app-photos-list>
+    } @defer (on viewport) {
+    <app-reviews [reviews]="locationReviews$ | async"></app-reviews>
+    } @placeholder {
+    <div>Placeholder</div>
     }
   </div>
 </section>

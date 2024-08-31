@@ -1,10 +1,3 @@
-export interface ILocationPhotosOptions {
-  limit: number;
-  offset: number;
-  source: number;
-  language: string;
-}
-
 export interface ILocationPhotos {
   data: ILocationPhotosData[];
   paging: ILocationPhotosPaging;

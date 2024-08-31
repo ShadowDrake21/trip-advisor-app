@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import {
   ILocationPhotos,
@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   imports: [NzCardModule, DatePipe],
   templateUrl: './photos-list.component.html',
   styleUrl: './photos-list.component.sass',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotosListComponent {
   photos = input.required<ILocationPhotosData[]>();

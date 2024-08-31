@@ -1,0 +1,54 @@
+@for (review of reviews()?.data; track review.id) {
+<nz-comment
+  class="review"
+  [nzAuthor]="review.user.username"
+  [nzDatetime]="review.published_date"
+>
+  <nz-avatar
+    class="review__avatar"
+    nz-comment-avatar
+    nzIcon="user"
+    [nzSrc]="review.user.avatar?.['small']"
+  ></nz-avatar>
+  <nz-comment-content class="review__content">
+    <h3 class="review__content-title">{{ review.title }}</h3>
+    <p class="review__content-text">
+      {{ review.text }}
+    </p>
+    <div class="review__content-info">
+      <p class="review__content-info__text">
+        <span>Travel date: </span>{{ review.travel_date | date : "fullDate" }}
+      </p>
+      <p class="review__content-info__text">
+        <span>Trip type: </span>{{ review.trip_type }}
+      </p>
+      <p class="review__content-info__text">
+        <span>Language: </span>{{ review.lang }}
+      </p>
+      <p class="review__content-info__text">
+        <span>Machine translated: </span
+        >{{ review.is_machine_translated ? "yes" : "no" }}
+      </p>
+      <a class="review__content-link" [href]="review.url" target="_blank"
+        >Review</a
+      >
+    </div>
+  </nz-comment-content>
+  <div class="review__rating">
+    <img
+      class="review__rating-img"
+      [src]="review.rating_image_url"
+      alt="rating img"
+    />
+    <span
+      class="review__rating-icon"
+      nz-tooltip
+      nzTitle="Like"
+      nz-icon
+      nzType="like"
+      [nzTheme]="review.helpful_votes > 0 ? icons[0].theme! : icons[1].theme!"
+    ></span>
+    <span class="review__rating-text">{{ review.helpful_votes }}</span>
+  </div>
+</nz-comment>
+}

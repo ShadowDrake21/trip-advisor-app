@@ -19,7 +19,7 @@ export interface ILocationReviewsItem {
   title: string;
   owner_response: ILocationReviewsItemOwnerResponse;
   is_machine_translated: boolean;
-  user: ILocationReviewsItemUser;
+  user: Partial<ILocationReviewsItemUser>;
   subratings: ILocationReviewsItemSubratings;
 }
 
@@ -46,11 +46,11 @@ export interface ILocationReviewsItemUserLocation {
 }
 
 export interface ILocationReviewsItemAvatar {
-  additionalProp: string;
+  [extention: string]: string;
 }
 
 export interface ILocationReviewsItemSubratings {
-  additionalProp: ILocationReviewsItemAdditionalProp;
+  [subrating: string]: ILocationReviewsItemAdditionalProp;
 }
 
 export interface ILocationReviewsItemAdditionalProp {

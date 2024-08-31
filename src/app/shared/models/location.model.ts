@@ -1,3 +1,10 @@
+export interface ILocationContentOptions {
+  limit: number;
+  offset: number;
+  source: number;
+  language: string;
+}
+
 export interface ILocation {
   location_id: number;
   name: string;
