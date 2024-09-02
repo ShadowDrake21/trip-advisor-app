@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   imports: [NzCardModule, DatePipe],
   templateUrl: './photos-list.component.html',
   styleUrl: './photos-list.component.sass',
+  host: { '[style.display]': `'block'`, '[style.padding]': `'25px 0'` },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotosListComponent {

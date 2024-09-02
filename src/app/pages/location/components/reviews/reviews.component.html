@@ -1,3 +1,4 @@
+<h2 class="section__title">Recent reviews</h2>
 @for (review of reviews()?.data; track review.id) {
 <nz-comment
   class="review"
@@ -17,7 +18,7 @@
     </p>
     <div class="review__content-info">
       <p class="review__content-info__text">
-        <span>Travel date: </span>{{ review.travel_date | date : "fullDate" }}
+        <span>Travel date: </span>{{ review.travel_date | date : "MMMM yyyy" }}
       </p>
       <p class="review__content-info__text">
         <span>Trip type: </span>{{ review.trip_type }}

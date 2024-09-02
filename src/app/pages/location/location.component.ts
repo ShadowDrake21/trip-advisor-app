@@ -7,7 +7,10 @@ import {
 import { TripadvisorService } from '../../core/services/tripadvisor.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, of, switchMap, tap } from 'rxjs';
-import { ILocation } from '../../shared/models/location.model';
+import {
+  ILocation,
+  ILocationContentOptions,
+} from '../../shared/models/location.model';
 import {
   AsyncPipe,
   DatePipe,
@@ -25,6 +28,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { PhotosListComponent } from './components/photos-list/photos-list.component';
 import { ILocationReviews } from '../../shared/models/location-review.model';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { LocationDetailsComponent } from './components/location-details/location-details.component';
 
 @Component({
   selector: 'app-location',
@@ -38,6 +42,7 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
     DatePipe,
     PhotosListComponent,
     ReviewsComponent,
+    LocationDetailsComponent,
   ],
   templateUrl: './location.component.html',
   styleUrl: './location.component.sass',
@@ -72,6 +77,15 @@ export class LocationComponent implements OnInit {
     //   this.route.snapshot.params['id']
     // );
 
+    // this.getReviews();
     this.locationReviews$ = of(locationReviews);
+  }
+
+  getReviews(options?: Partial<ILocationContentOptions>) {
+    this.locationReviews$ = this.tripadvisorService.getLocationReviews(
+      // this.route.snapshot.params['id'],
+      staticLocation.location_id + '',
+      options
+    );
   }
 }
